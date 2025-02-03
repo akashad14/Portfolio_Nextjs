@@ -81,7 +81,11 @@ export default function Home() {
           >
             <div className="absolute -right-4 -top-4 h-full w-full rounded-3xl bg-purple-200 dark:bg-purple-900/50"></div>
             <div className="relative h-full w-full overflow-hidden rounded-3xl bg-purple-100 dark:bg-purple-900/30">
-              <Image src="/images/home.avif" alt="Portfolio Image" fill className="object-cover" priority />
+              <Image 
+              src="/images/home.avif" 
+              alt="Portfolio Image" 
+              fill 
+              className="object-cover" priority />
               <div className="absolute -right-2 -top-2 text-2xl">✨</div>
               <div className="absolute -bottom-2 -left-2 text-2xl">✨</div>
             </div>
