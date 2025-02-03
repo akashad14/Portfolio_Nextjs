@@ -1,102 +1,152 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useState } from "react"
-import Image from "next/image";
-
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 
 export default function ContactForm() {
-  const [agreed, setAgreed] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    phoneNumber: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    phoneNumber: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { name: "", phoneNumber: "", email: "", message: "" };
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+      isValid = false;
+    }
+
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required";
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!validateForm()) return;
+
+    const formDataObj = new FormData(event.currentTarget);
+    formDataObj.append("access_key", "3713da67-aee3-4682-b0fa-b88930ef1322");
+
+    const object = Object.fromEntries(formDataObj);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        console.log(result);
+        alert("Message sent successfully!");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Submission failed. Please check your internet connection.");
+    }
+  }
 
   return (
-    <div className="grid lg:grid-cols-2 gap-0 max-w-6xl mx-auto bg-white rounded-[32px] overflow-hidden">
-      {/* Form Section */}
-      <div className="p-8 lg:p-12">
-        <div className="space-y-6 max-w-md">
-          <div>
-            <h1 className="text-3xl font-bold mb-3">We&apos;d love to help</h1>
-            <p className="text-gray-500">
-              We&apos;re a full service agency with experts ready to help. We&apos;ll get in touch within 24 hours.
-            </p>
+    <Card className="w-full max-w-md mx-auto">
+      <CardHeader>
+        <CardTitle>Contact Us</CardTitle>
+        <CardDescription>Fill out the form below to get in touch with us.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Name</Label>
+            <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" />
+            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
           </div>
-
-          <form className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName">First name</Label>
-                <Input id="firstName" placeholder="First name" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName">Last name</Label>
-                <Input id="lastName" placeholder="Last name" />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="you@company.com" />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="phone">Phone number</Label>
-              <div className="flex gap-2">
-                <select className="flex h-10 w-[90px] rounded-md border border-input bg-background px-3 py-2 text-sm">
-                  <option>US</option>
-                  <option>UK</option>
-                  <option>CA</option>
-                </select>
-                <Input id="phone" type="tel" placeholder="+1 1234 000-0000" className="flex-1" />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
-              <Textarea id="message" placeholder="Leave us a message..." className="min-h-[120px] resize-none" />
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <Checkbox id="privacy" checked={agreed} onCheckedChange={(checked) => setAgreed(checked as boolean)} />
-              <label
-                htmlFor="privacy"
-                className="text-sm text-gray-500 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                You agree to our friendly{" "}
-                <a href="#" className="text-black underline">
-                  privacy policy
-                </a>
-                .
-              </label>
-            </div>
-
-            <Button className="w-full bg-black hover:bg-gray-800" size="lg">
-              Send message
-            </Button>
-          </form>
-        </div>
-      </div>
-
-      {/* Testimonial Section */}
-      <div className="relative hidden lg:block bg-black">
-        <Image
-          src="/images/f6.jpg"
-          alt="Abstract prismatic effect"
-          width={400}
-          height={400}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute bottom-12 left-12 right-12 text-white">
-          <blockquote className="text-lg mb-6">
-          </blockquote>
-          
-          
-        </div>
-      </div>
-    </div>
-  )
+          <div className="space-y-2">
+            <Label htmlFor="phoneNumber">Phone Number</Label>
+            <Input
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              placeholder="Your phone number"
+            />
+            {errors.phoneNumber && <p className="text-sm text-red-500">{errors.phoneNumber}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your email address"
+            />
+            {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="message">Message</Label>
+            <Textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your message"
+              rows={4}
+            />
+            {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
+          </div>
+          <Button type="submit" className="w-full">
+            Send Message
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
 }
-

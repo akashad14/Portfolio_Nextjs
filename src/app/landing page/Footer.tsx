@@ -4,18 +4,19 @@ import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone } from "lucide-reac
 export default function Footer() {
     
   return (
-    <footer className="w-full py-8 px-4 border-t bg-gray-900 text-white">
-      <div className="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-        {/* Logo Section */}
-        <div className="flex flex-col items-center md:items-start space-y-4">
+    <footer className="w-full py-8 lg:px-24 border-t bg-gray-900 text-white items-center justify-center">
+       {/* Logo Section */}
+       <div className="flex flex-col items-center md:items-start space-y-4 lg:px-40">
           <h2 className="text-2xl font-bold">Portfolio</h2>
           <p className="text-sm text-gray-400">Design, display, and elevate your creative work.</p>
         </div>
+      <div className="container mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left px-10 lg:px-20 pt-6">
+       
 
         {/* Service Section */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Service</h3>
-          <nav className="flex flex-col space-y-2">
+          <h3 className="text-lg font-semibold mb-4 text-left">Service</h3>
+          <nav className="flex flex-col space-y-2 text-left">
             <Link href="/about" className="text-gray-400 hover:text-white">About me</Link>
             <Link href="/services" className="text-gray-400 hover:text-white">Services</Link>
             <Link href="/project" className="text-gray-400 hover:text-white">Projects</Link>
@@ -25,8 +26,8 @@ export default function Footer() {
 
         {/* Resources Section */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Resources</h3>
-          <nav className="flex flex-col space-y-2">
+          <h3 className="text-lg font-semibold mb-4 text-left">Resources</h3>
+          <nav className="flex flex-col space-y-2 text-left ">
             <Link href="/apps" className="text-gray-400 hover:text-white">Apps</Link>
             <Link href="/developer" className="text-gray-400 hover:text-white">Developer</Link>
             <Link href="/integration" className="text-gray-400 hover:text-white">Integration</Link>
@@ -36,10 +37,10 @@ export default function Footer() {
 
         {/* Contact Section */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+          <h3 className="text-lg font-semibold mb-4 text-left ">Contact</h3>
           <div className="flex flex-col space-y-2">
-            <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400">
-              <Mail className="h-5 w-5" /> Portfolio@gmail.co
+            <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400 ">
+              <Mail className="h-5 w-5" />Portfolio@gmail.co
             </div>
             <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400">
               <Phone className="h-5 w-5" /> +12234578910

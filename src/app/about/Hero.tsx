@@ -16,7 +16,7 @@ export default function AboutMe() {
 
   return (
  
-      <div className="min-h-full bg-gradient-to-b from-white to-purple-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center px-4 sm:px-6 lg:px-0 py-16">
+      <div className="min-h-full bg-gradient-to-b from-white to-purple-50 dark:from-gray-950 dark:to-gray-900 flex items-center px-4 sm:px-6 lg:px-0 py-16">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-10 max-w-5xl mx-auto">
           
           {/* Profile Image */}

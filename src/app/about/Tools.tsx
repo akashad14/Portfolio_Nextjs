@@ -37,7 +37,7 @@ export default function ToolsSection() {
         <h2 className="text-xl font-semibold mb-8 text-purple-800">TOOLS I USE</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {tools.map((tool) => (
-            <Card key={tool.name} className="border-none shadow-sm hover:shadow-md transition-shadow duration-200">
+            <Card key={tool.name} className="border-none shadow-sm hover:shadow-md shadow-gray-500 transition-shadow duration-200">
               <CardContent className="flex flex-col items-center justify-center p-6">
                 <Image
                   src={tool.icon || "/placeholder.svg"}

@@ -4,7 +4,7 @@
 import HomePage from "./landing page/Home"
 import SocialLinks from "./landing page/Social-links"
 
-import FocusCardsDemo from "./landing page/Feature"
+import FilteredPortfolio from "@/components/ui/FilteredPortfolio"
 
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       <HomePage/>
       <SocialLinks/>
   
-       <FocusCardsDemo/>
+       <FilteredPortfolio/>
      
       
 
