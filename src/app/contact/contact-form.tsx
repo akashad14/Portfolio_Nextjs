@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 
 export default function ContactForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
@@ -95,58 +98,81 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle>Contact Us</CardTitle>
-        <CardDescription>Fill out the form below to get in touch with us.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" />
-            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="phoneNumber">Phone Number</Label>
-            <Input
-              id="phoneNumber"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              placeholder="Your phone number"
-            />
-            {errors.phoneNumber && <p className="text-sm text-red-500">{errors.phoneNumber}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Your email address"
-            />
-            {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
-            <Textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Your message"
-              rows={4}
-            />
-            {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
-          </div>
-          <Button type="submit" className="w-full">
-            Send Message
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }} // Fade in & slide up
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-slate-900 p-4"
+    >
+      <Card className="w-full max-w-md mx-auto shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-bold">Contact Us</CardTitle>
+          <CardDescription className="text-center text-gray-500">Fill out the form below to get in touch.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <motion.div className="space-y-2" whileHover={{ scale: 1.02 }}>
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" />
+              {errors.name && (
+                <motion.p className="text-sm text-red-500" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  {errors.name}
+                </motion.p>
+              )}
+            </motion.div>
+
+            <motion.div className="space-y-2" whileHover={{ scale: 1.02 }}>
+              <Label htmlFor="phoneNumber">Phone Number</Label>
+              <Input id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Your phone number" />
+              {errors.phoneNumber && (
+                <motion.p className="text-sm text-red-500" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  {errors.phoneNumber}
+                </motion.p>
+              )}
+            </motion.div>
+
+            <motion.div className="space-y-2" whileHover={{ scale: 1.02 }}>
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Your email address" />
+              {errors.email && (
+                <motion.p className="text-sm text-red-500" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  {errors.email}
+                </motion.p>
+              )}
+            </motion.div>
+
+            <motion.div className="space-y-2" whileHover={{ scale: 1.02 }}>
+              <Label htmlFor="message">Message</Label>
+              <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Your message" rows={4} />
+              {errors.message && (
+                <motion.p className="text-sm text-red-500" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  {errors.message}
+                </motion.p>
+              )}
+            </motion.div>
+
+            <motion.div className="flex justify-between gap-2 mt-4">
+              <motion.button
+                type="button"
+                onClick={() => router.back()}
+                className="px-4 py-2 bg-purple-600 text-white rounded-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Cancel
+              </motion.button>
+              <motion.button
+                type="submit"
+                className="px-6 py-2 bg-purple-600 text-white rounded-lg shadow"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Send Message
+              </motion.button>
+            </motion.div>
+          </form>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }

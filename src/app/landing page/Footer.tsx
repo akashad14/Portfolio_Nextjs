@@ -1,72 +1,115 @@
-import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Footer() {
-    
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "About me", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Projects", href: "/project" },
+    { name: "Contact me", href: "/contact" },
+  ];
+
+  const socials = [
+    { icon: Facebook, label: "Facebook", url: "https://facebook.com" },
+    { icon: Twitter, label: "Twitter", url: "https://twitter.com" },
+    { icon: Instagram, label: "Instagram", url: "https://instagram.com" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com" },
+  ];
+
   return (
-    <footer className="w-full py-8 lg:px-24 border-t bg-gray-900 text-white items-center justify-center">
-       {/* Logo Section */}
-       <div className="flex flex-col items-center md:items-start space-y-4 lg:px-40">
-          <h2 className="text-2xl font-bold">Portfolio</h2>
-          <p className="text-sm text-gray-400">Design, display, and elevate your creative work.</p>
-        </div>
-      <div className="container mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left px-10 lg:px-20 pt-6">
-       
-
-        {/* Service Section */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-left">Service</h3>
-          <nav className="flex flex-col space-y-2 text-left">
-            <Link href="/about" className="text-gray-400 hover:text-white">About me</Link>
-            <Link href="/services" className="text-gray-400 hover:text-white">Services</Link>
-            <Link href="/project" className="text-gray-400 hover:text-white">Projects</Link>
-            <Link href="/contact" className="text-gray-400 hover:text-white">Contact Us</Link>
-          </nav>
-        </div>
-
-        {/* Resources Section */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-left">Resources</h3>
-          <nav className="flex flex-col space-y-2 text-left ">
-            <Link href="/apps" className="text-gray-400 hover:text-white">Apps</Link>
-            <Link href="/developer" className="text-gray-400 hover:text-white">Developer</Link>
-            <Link href="/integration" className="text-gray-400 hover:text-white">Integration</Link>
-            <Link href="/pricing" className="text-gray-400 hover:text-white">Logo</Link>
-          </nav>
-        </div>
-
-        {/* Contact Section */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-left ">Contact</h3>
-          <div className="flex flex-col space-y-2">
-            <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400 ">
-              <Mail className="h-5 w-5" />Portfolio@gmail.co
+        <footer className="bg-zinc-900 text-zinc-100">
+        <div className="container mx-auto px-4 py-12">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            {/* Brand Column */}
+            <div className="space-y-2">
+              <div className="h-auto max-h-[190px] overflow-hidden">
+                <Image
+                  src="/images/logo/brand-logo.png"
+                  alt="Stuburn Design Logo"
+                  width={200}
+                  height={60}
+                  className="h-auto max-h-[190px] w-auto invert"
+                />
+              </div>
+              <p className="text-zinc-400 mt-4">
+                Creating distinctive designs that leave a lasting impression.
+              </p>
             </div>
-            <div className="flex items-center justify-center md:justify-start gap-2 text-gray-400">
-              <Phone className="h-5 w-5" /> +12234578910
-            </div>
-            <div className="flex justify-center md:justify-start space-x-4 mt-4">
-              <Link href="https://facebook.com" target="_blank" className="text-gray-400 hover:text-white">
-                <Facebook className="h-6 w-6" />
-              </Link>
-              <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-white">
-                <Twitter className="h-6 w-6" />
-              </Link>
-              <Link href="https://instagram.com" target="_blank" className="text-gray-400 hover:text-white">
-                <Instagram className="h-6 w-6" />
-              </Link>
-              <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-white">
-                <Linkedin className="h-6 w-6" />
-              </Link>
-            </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {links.map((link) => (
+              <li key={link.name}>
+            <Link href={link.href} className="text-zinc-400 hover:text-teal-500 transition-colors">
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2 text-zinc-400">
+                <Mail className="h-4 w-4" />
+                <a href="mailto:hello@stuburn.design" className="hover:text-teal-500 transition-colors">
+                  hello@stuburn.design
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-zinc-400">
+                <Phone className="h-4 w-4" />
+                <a href="tel:+1234567890" className="hover:text-teal-500 transition-colors">
+                  (123) 456-7890
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-zinc-400">
+                <MapPin className="h-4 w-4" />
+                <span>India</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social Links */}
+          <div>
+      <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+      <div className="flex gap-4">
+        {socials.map(({ icon: Icon, label, url }) => (
+          <Link
+            key={label}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-zinc-800 p-2 rounded-full hover:bg-teal-500 transition-colors"
+            aria-label={label}
+          >
+            <Icon className="h-6 w-6 text-white" />
+          </Link>
+        ))}
+      </div>
+    </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-zinc-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
+          <p className="text-zinc-400 text-sm">© {new Date().getFullYear()} Stuburn Design. All rights reserved.</p>
+          <div className="flex gap-6 mt-4 sm:mt-0">
+            <Link href="#" className="text-sm text-zinc-400 hover:text-teal-500 transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="text-sm text-zinc-400 hover:text-teal-500 transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
-
-      {/* Copyright Section */}
-      <div className="mt-6 text-center text-sm text-gray-500 border-t border-gray-700 pt-4">
-        © {new Date().getFullYear()} Portfolio.com. All rights reserved.
-      </div>
     </footer>
-  );
+  )
 }
+

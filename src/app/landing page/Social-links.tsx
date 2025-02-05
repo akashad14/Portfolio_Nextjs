@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -10,11 +11,11 @@ export default function SocialLinks() {
       url: "https://www.behance.net/",
       image: "/images/behance.png",
     },
-    // {
-    //   name: "Dribbble",
-    //   url: "https://dribbble.com/",
-    //   image: "/images/dribble.png",
-    // },
+    {
+      name: "Whatsapp",
+      url: "https://www.whatsapp.com/",
+      image: "/images/whatsapp.png",
+    },
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/",
@@ -23,14 +24,21 @@ export default function SocialLinks() {
   ]
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 md:gap-24 p-4 my-10">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 md:gap-24 p-4 my-10"
+    >
       {socialLinks.map((social) => (
-        <Link
+        <motion.a
           key={social.name}
           href={social.url}
-          className="flex items-center gap-3 text-lg sm:text-xl md:text-2xl font-semibold text-black dark:text-white hover:opacity-80 transition-opacity"
           target="_blank"
           rel="noopener noreferrer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-3 text-lg sm:text-xl md:text-2xl font-semibold text-black dark:text-white hover:opacity-80 transition-opacity"
         >
           <Image
             src={social.image}
@@ -40,8 +48,8 @@ export default function SocialLinks() {
             className="w-8 h-8 sm:w-10 sm:h-10"
           />
           {social.name}
-        </Link>
+        </motion.a>
       ))}
-    </div>
+    </motion.div>
   )
 }

@@ -1,15 +1,19 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 export default function Hero() {
+  const router = useRouter(); // Router for navigation
+
   return (
     <section className="relative overflow-hidden py-24 px-6 md:px-12 lg:px-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        
         className="max-w-6xl mx-auto text-center"
       >
         <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
@@ -18,9 +22,19 @@ export default function Hero() {
         <p className="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300">
           Bringing your ideas to life with stunning visuals and innovative designs
         </p>
-        <Button size="lg" className="text-lg px-8 py-6">
+        <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => router.push("/contact")} // Navigate to contact page
+                className="inline-flex items-center justify-center rounded-3xl bg-gray-700 px-10 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-900 dark:hover:bg-slate-400"
+              >
+                Get Started
+              </motion.button>
+        {/* <Button size="lg" className="text-lg px-8 py-6"
+        >
+          
           Get Started
-        </Button>
+        </Button> */}
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}

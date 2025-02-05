@@ -1,10 +1,12 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { Download } from "lucide-react";
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { Download } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
+export default function AboutPage() {
 
-export default function AboutMe() {
   const handleDownloadCV = () => {
     const link = document.createElement("a");
     link.href = "/cv.pdf";
@@ -14,45 +16,80 @@ export default function AboutMe() {
     document.body.removeChild(link);
   };
 
-  return (
- 
-      <div className="min-h-full bg-gradient-to-b from-white to-purple-50 dark:from-gray-950 dark:to-gray-900 flex items-center px-4 sm:px-6 lg:px-0 py-16">
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-10 max-w-5xl mx-auto">
-          
-          {/* Profile Image */}
-          <div className="flex justify-center">
-            <Image
-              src="/images/f2.jpg"
-              alt="Profile photo"
-              width={400}
-              height={400}
-              className="rounded-3xl max-w-full h-[350px] shadow-lg"
-            />
-          </div>
 
-          {/* Content */}
-          <div className="text-center md:text-left mx-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+
+  return (
+      <main className="container py-16 md:pt-24 md:pb-20 px-10">
+        <div className="grid gap-12 lg:grid-cols-2 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative rounded-2xl overflow-hidden"
+          >
+            <Image
+              src="/images/f5.jpg"
+              alt="Workspace with design tools"
+              width={600}
+              height={400}
+              className="object-cover w-[700px] h-[400px]"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.1 }}
+              transition={{ delay: 0.8 }}
+              className="absolute inset-0 bg-primary"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="space-y-6"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-4xl font-bold tracking-tight"
+            >
               About Me
-            </h1>
-            <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed mt-4">
-            {`I am a freelance graphic designer currently based in Punjab state, India. I've been working in graphic design 
-            for the past one year. In this year working with startups and doing freelance work. My skills include 
-            everything from logo design, brand identity to social media designing.`}
-          </p>
-            <div className="mt-6 flex justify-center md:justify-start">
-              <button
-                onClick={handleDownloadCV}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-800 focus:ring-2 focus:ring-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700"
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-lg text-muted-foreground leading-relaxed"
+            >
+              I am a freelance graphic designer currently based in Punjab state, India. I&apos;ve been working in
+              graphic design for the past one year. In this year working with startups and doing freelance work. My
+              skills include everything from logo design, brand identity to social media designing.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <Button className="group" variant="default" size="lg"
+              onClick={handleDownloadCV}
               >
-                Download My CV
-                <Download className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-          
+                <span>Download My CV</span>
+                <motion.span
+                  initial={{ x: -4 }}
+                  animate={{ x: 0 }}
+                  transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1, repeatType: "reverse" }}
+                >
+                  <Download className="ml-2 h-4 w-4" />
+                </motion.span>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-    
-  );
+      </main>
+  
+  )
 }
+

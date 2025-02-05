@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, Moon, Sun } from "lucide-react"
 
@@ -23,14 +24,24 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-20">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl md:text-2xl font-bold text-primary">
-              Portfolio
+          
+          {/* Logo Section */}
+          <div className="flex items-center overflow-hidden h-16">
+            <Link href="/">
+              <Image
+                src="/images/logo/brand-logo.png"
+                alt="Stuburn Design Logo"
+                width={200}
+                height={60}
+                className="h-auto max-h-[170px] w-auto dark:invert"
+                priority
+              />
             </Link>
           </div>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
