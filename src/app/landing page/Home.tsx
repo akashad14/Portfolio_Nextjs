@@ -18,7 +18,7 @@ export default function Home() {
   };
 
   return (
-          <div className="min-h-full w-full bg-[#dce6e6] dark:bg-[#1b3f3d]">
+          <div className="min-h-full w-full ">
             <main className="items-center mx-auto px-4 py-16 sm:px-6 lg:px-[8rem]">
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 

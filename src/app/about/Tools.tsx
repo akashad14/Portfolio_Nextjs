@@ -34,7 +34,7 @@ export default function ToolsSection() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-900 rounded-xl">
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300 bg-[#dce6e6] dark:bg-[#1b3f3d] rounded-xl">
                 <CardContent className="flex flex-col items-center justify-center p-6">
                   <Image
                     src={tool.icon || "/placeholder.svg"}
