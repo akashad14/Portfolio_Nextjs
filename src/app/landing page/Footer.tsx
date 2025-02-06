@@ -1,4 +1,11 @@
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+"use client";
+
+import {Mail, Phone, MapPin } from "lucide-react"
+import { FiPhone } from "react-icons/fi";
+import { SlLocationPin } from "react-icons/sl";
+import { LuMail } from "react-icons/lu";
+import { IoLogoFacebook } from "react-icons/io";
+import { FaInstagramSquare, FaLinkedin, FaWhatsappSquare } from "react-icons/fa";
 import Image from "next/image"
 import Link from "next/link"
 
@@ -12,10 +19,10 @@ export default function Footer() {
   ];
 
   const socials = [
-    { icon: Facebook, label: "Facebook", url: "https://facebook.com" },
-    { icon: Twitter, label: "Twitter", url: "https://twitter.com" },
-    { icon: Instagram, label: "Instagram", url: "https://instagram.com" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com" },
+    { icon: IoLogoFacebook, label: "Facebook", url: "https://facebook.com" },
+    { icon: FaWhatsappSquare, label: "Whatsapp", url: "https://Whatsapp.com" },
+    { icon: FaInstagramSquare , label: "Instagram", url: "https://instagram.com" },
+    { icon: FaLinkedin, label: "LinkedIn", url: "https://linkedin.com" },
   ];
 
   return (
@@ -58,19 +65,19 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-zinc-400">
-                <Mail className="h-4 w-4" />
+                <LuMail  className="h-5 w-5" />
                 <a href="mailto:hello@stuburn.design" className="hover:text-teal-500 transition-colors">
                   hello@stuburn.design
                 </a>
               </li>
               <li className="flex items-center gap-2 text-zinc-400">
-                <Phone className="h-4 w-4" />
+                <FiPhone className="h-5 w-5" />
                 <a href="tel:+1234567890" className="hover:text-teal-500 transition-colors">
                   (123) 456-7890
                 </a>
               </li>
               <li className="flex items-center gap-2 text-zinc-400">
-                <MapPin className="h-4 w-4" />
+                <SlLocationPin  className="h-5 w-5" />
                 <span>India</span>
               </li>
             </ul>

@@ -1,13 +1,13 @@
 "use client"
 import About from "./Hero"
-import SkillsExperience from "./Experience"
+import EducationAndSkills from "./Experience"
 import ToolsSection from "./Tools"
 
 export default function about() {
   return (
     <div>
       <About/>
-      <SkillsExperience/>
+      <EducationAndSkills/>
       <ToolsSection/>
     </div>
   )

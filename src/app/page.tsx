@@ -9,8 +9,10 @@ import FilteredPortfolio from "@/components/ui/FilteredPortfolio"
 
 export default function Home() {
   return (
-    <div>
+    <div className="dark:bg-[#1b3f3d]">
+  
       <HomePage/>
+      
       <SocialLinks/>
   
        <FilteredPortfolio/>

@@ -73,7 +73,9 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <Button className="group" variant="default" size="lg"
+              <Button className="group bg-[#1b3f3d] dark:text-white" 
+              variant="default" 
+              size="lg"
               onClick={handleDownloadCV}
               >
                 <span>Download My CV</span>

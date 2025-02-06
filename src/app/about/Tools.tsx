@@ -26,7 +26,7 @@ export default function ToolsSection() {
       className="py-12 px-4"
     >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-16 text-purple-800 text-center">TOOLS I USE</h2>
+        <h2 className="text-3xl font-bold mb-16 text-[#1b3f3d] dark:text-[#d5ea94] text-center">TOOLS I USE</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {tools.map((tool) => (
             <motion.div

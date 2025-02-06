@@ -16,7 +16,7 @@ export default function Hero() {
         
         className="max-w-6xl mx-auto text-center"
       >
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+        <h1 className="text-5xl md:text-6xl h-20 font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#1b3f3d] to-[#d5ea94]">
           Creative Design Solutions
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300">
@@ -24,9 +24,9 @@ export default function Hero() {
         </p>
         <motion.button
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 1.0 }}
                 onClick={() => router.push("/contact")} // Navigate to contact page
-                className="inline-flex items-center justify-center rounded-3xl bg-gray-700 px-10 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-900 dark:hover:bg-slate-400"
+                className="inline-flex items-center justify-center rounded-3xl bg-gray-900 px-10 py-3 text-sm font-medium text-white transition-colors"
               >
                 Get Started
               </motion.button>

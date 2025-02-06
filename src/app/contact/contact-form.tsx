@@ -155,7 +155,7 @@ export default function ContactForm() {
               <motion.button
                 type="button"
                 onClick={() => router.back()}
-                className="px-4 py-2 bg-purple-600 text-white rounded-lg"
+                className="px-4 py-2 bg-[#1b3f3d] text-white rounded-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -163,7 +163,7 @@ export default function ContactForm() {
               </motion.button>
               <motion.button
                 type="submit"
-                className="px-6 py-2 bg-purple-600 text-white rounded-lg shadow"
+                className="px-6 py-2 bg-[#1b3f3d] text-white rounded-lg shadow"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
