@@ -175,12 +175,12 @@ const ContactForm2: React.FC = () => {
               <Textarea name="message" placeholder="Write here your message" value={formData.message} onChange={handleChange} />
               {errors.message && <p className="text-red-500 text-xs">{errors.message}</p>}
               <div className="flex items-center gap-36 pt-6">
-                <Button variant="outline" type="button" className="gap-2"
+                <Button variant="outline" type="button" className="gap-2 hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-950"
                 onClick={() => router.back()}>
                   <ArrowLeft className="h-4 w-4" />
                   Back to Home
                 </Button>
-                <Button type="submit" className="bg-[#8aede0] dark:bg-black text-[#1b3f3d] dark:text-white gap-2">
+                <Button type="submit" className="bg-[#8aede0] dark:bg-gray-900 text-[#1b3f3d] dark:text-white gap-2 hover:bg-slate-200 dark:hover:bg-gray-950">
                   <Send className="h-4 w-4" />
                   Send Message
                 </Button>
