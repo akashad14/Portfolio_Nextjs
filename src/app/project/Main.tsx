@@ -17,7 +17,7 @@ const projects: Project[] = [
     title: "Skincare Brand",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.",
     image:
-    "/images/project/project1.png",
+    "/images/project/project1.1.png",
     behanceUrl: "https://www.behance.net/gallery/164972919/Skincare-brand-identity",
   },
   {

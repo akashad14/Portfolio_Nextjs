@@ -61,7 +61,7 @@ const PortfolioImage = ({ item, onClick }: { item: PortfolioItem; onClick: () =>
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
       >
-        {item.title}
+        {/* {item.title} */}
       </motion.p>
     </motion.div>
   </motion.div>

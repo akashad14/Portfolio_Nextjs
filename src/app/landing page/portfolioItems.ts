@@ -83,6 +83,14 @@ export interface PortfolioItem {
       imagesrc:
        "/images/Posterdesign/poster6.jpg"
     },
+   
+    {
+      id: 17,
+      title: "Portrait Design",
+      category: "poster",
+      imagesrc:
+       "/images/Posterdesign/poster9.jpg"
+    },
     {
       id: 12,
       title: "Vinyl Record",
@@ -102,7 +110,7 @@ export interface PortfolioItem {
       title: "Portrait Photo",
       category: "Social Media",
       imagesrc:
-        "/images/Socialmedia/social-media2.png"
+        "/images/Socialmedia/socialmedia4.jpg"
     },
     {
       id: 15,
@@ -110,6 +118,20 @@ export interface PortfolioItem {
       category: "Social Media",
       imagesrc:
       "/images/Socialmedia/social-media3.png"
+    },
+    {
+      id: 16,
+      title: "Portrait Design",
+      category: "Social Media",
+      imagesrc:
+       "/images/Socialmedia/poster7.jpg"
+    },
+    {
+      id: 18,
+      title: "Portrait Design",
+      category: "Social Media",
+      imagesrc:
+       "/images/Socialmedia/poster8.jpg"
     },
   ]
   
