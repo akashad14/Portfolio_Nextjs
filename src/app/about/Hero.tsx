@@ -9,8 +9,8 @@ export default function AboutPage() {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/cv.pdf";
-    link.download = "my-cv.pdf";
+    link.href = "/My sumandeep kaur resume.pdf";
+    link.download = "Sumandeep_Kaur_CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

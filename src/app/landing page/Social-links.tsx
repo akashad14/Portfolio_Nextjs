@@ -8,7 +8,7 @@ export default function SocialLinks() {
   const socialLinks = [
     {
       name: "Behance",
-      url: "https://www.behance.net/",
+      url: "https://www.behance.net/SDKDESIGN9",
       image: "/images/behance.png",
     },
     {
@@ -18,7 +18,7 @@ export default function SocialLinks() {
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/",
+      url: "https://www.linkedin.com/in/sumandeep-kaur09",
       image: "/images/linkedin.png",
     },
   ]

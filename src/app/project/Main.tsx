@@ -14,25 +14,25 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "E-COMMERCE APP",
+    title: "Skincare Brand",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.",
     image:
-      "/images/f3.jpg",
-    behanceUrl: "#",
+    "/images/project/project1.png",
+    behanceUrl: "https://www.behance.net/gallery/164972919/Skincare-brand-identity",
   },
   {
-    title: "Perfume Store Landing page",
+    title: "Unicode developing solution",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.",
     image:
-      "/images/f4.jpg",
-    behanceUrl: "#",
+      "/images/project/project2.png",
+    behanceUrl: "https://www.behance.net/gallery/152501895/Unicode-logo-Design",
   },
   {
-    title: "Food Delivery App",
+    title: "Social media design",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in.",
     image:
-      "/images/f4.jpg",
-    behanceUrl: "#",
+      "/images/project/project3.png",
+    behanceUrl: "https://www.behance.net/gallery/163999385/social-media-design",
   },
 ]
 

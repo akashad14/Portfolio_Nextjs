@@ -143,10 +143,10 @@ const ContactForm: React.FC = () => {
             </div>
             {/* Social Media Links */}
             <div className="flex gap-4 mt-12">
-              <Link href="https://instagram.com" className="hover:opacity-80">
+              <Link href="https://www.instagram.com/stuburn_design/" className="hover:opacity-80">
                 <FaInstagramSquare className="h-7 w-7" />
               </Link>
-              <Link href="https://linkedin.com" className="hover:opacity-80">
+              <Link href="https://www.linkedin.com/in/sumandeep-kaur09" className="hover:opacity-80">
                 <FaLinkedin className="h-7 w-7" />
               </Link>
               <Link href="https://wa.me/1234567890" className="hover:opacity-80">

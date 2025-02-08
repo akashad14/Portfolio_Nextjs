@@ -5,7 +5,7 @@ import { FiPhone } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { LuMail } from "react-icons/lu";
 import { IoLogoFacebook } from "react-icons/io";
-import { FaInstagramSquare, FaLinkedin, FaWhatsappSquare } from "react-icons/fa";
+import { FaInstagramSquare, FaLinkedin, FaWhatsappSquare, FaBehanceSquare } from "react-icons/fa";
 import Image from "next/image"
 import Link from "next/link"
 
@@ -19,10 +19,10 @@ export default function Footer() {
   ];
 
   const socials = [
-    { icon: IoLogoFacebook, label: "Facebook", url: "https://facebook.com" },
+    { icon: FaBehanceSquare, label: "Behance", url: "https://www.behance.net/SDKDESIGN9" },
     { icon: FaWhatsappSquare, label: "Whatsapp", url: "https://Whatsapp.com" },
-    { icon: FaInstagramSquare , label: "Instagram", url: "https://instagram.com" },
-    { icon: FaLinkedin, label: "LinkedIn", url: "https://linkedin.com" },
+    { icon: FaInstagramSquare , label: "Instagram", url: "https://www.instagram.com/stuburn_design/" },
+    { icon: FaLinkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/sumandeep-kaur09" },
   ];
 
   return (

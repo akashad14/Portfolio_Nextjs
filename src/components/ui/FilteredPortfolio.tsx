@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { portfolioItems, type PortfolioItem } from "@/app/landing page/portfolioItems"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { ImageModal } from "./ImageModal"
 
 const FilterButton = ({
   active,
@@ -28,7 +29,7 @@ const FilterButton = ({
   </motion.div>
 )
 
-const PortfolioImage = ({ item }: { item: PortfolioItem }) => (
+const PortfolioImage = ({ item, onClick }: { item: PortfolioItem; onClick: () => void }) => (
   <motion.div
     layout
     initial={{ opacity: 0, scale: 0.6 }}
@@ -39,8 +40,9 @@ const PortfolioImage = ({ item }: { item: PortfolioItem }) => (
       scale: { duration: 0.5, ease: "easeOut" },
       layout: { duration: 0.4 },
     }}
-    className="relative w-full pb-[100%] overflow-hidden rounded-lg shadow-lg"
+    className="relative w-full pb-[100%] overflow-hidden rounded-lg shadow-lg cursor-pointer"
     whileHover={{ scale: 1.02 }}
+    onClick={onClick}
   >
     <motion.img
       src={item.imagesrc || "/placeholder.svg"}
@@ -84,7 +86,8 @@ const getGridColumns = (itemCount: number) => {
 }
 
 export default function FilteredPortfolio() {
-  const [selectedCategory, setSelectedCategory] = useState<"all" | "logo" | "poster" | "brand">("all")
+  const [selectedCategory, setSelectedCategory] = useState<"all" | "logo" | "poster" | "Social Media">("all")
+  const [selectedImage, setSelectedImage] = useState<PortfolioItem | null>(null)
 
   const filteredItems =
     selectedCategory === "all" ? portfolioItems : portfolioItems.filter((item) => item.category === selectedCategory)
@@ -93,11 +96,6 @@ export default function FilteredPortfolio() {
 
   return (
     <div className="container mx-auto py-16">
-       <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 dark:text-white mb-4">Design & Illustration </h1>
-          <p className="text-gray-600 text-lg dark:text-white  max-w-2xl mx-auto">
-          Logo & Identity design, commission art & illustration, collaborations and more
-          </p></div>
       {/* Filter Buttons */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
@@ -114,8 +112,8 @@ export default function FilteredPortfolio() {
         <FilterButton active={selectedCategory === "poster"} onClick={() => setSelectedCategory("poster")}>
           Poster Design
         </FilterButton>
-        <FilterButton active={selectedCategory === "brand"} onClick={() => setSelectedCategory("brand")}>
-          Brand Identity
+        <FilterButton active={selectedCategory === "Social Media"} onClick={() => setSelectedCategory("Social Media")}>
+        Social Media
         </FilterButton>
       </motion.div>
 
@@ -129,10 +127,18 @@ export default function FilteredPortfolio() {
       >
         <AnimatePresence mode="popLayout">
           {filteredItems.map((item) => (
-            <PortfolioImage key={item.id} item={item} />
+            <PortfolioImage key={item.id} item={item} onClick={() => setSelectedImage(item)} />
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageUrl={selectedImage?.imagesrc || ""}
+        title={selectedImage?.title || ""}
+      />
     </div>
   )
 }
