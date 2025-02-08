@@ -39,13 +39,13 @@ const PortfolioImage = ({ item }: { item: PortfolioItem }) => (
       scale: { duration: 0.5, ease: "easeOut" },
       layout: { duration: 0.4 },
     }}
-    className="relative aspect-square overflow-hidden rounded-lg shadow-lg"
+    className="relative w-full pb-[100%] overflow-hidden rounded-lg shadow-lg"
     whileHover={{ scale: 1.02 }}
   >
     <motion.img
       src={item.imagesrc || "/placeholder.svg"}
       alt={item.title}
-      className="object-cover w-full h-full"
+      className="absolute inset-0 w-full h-full object-cover"
       initial={{ scale: 1.2 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -77,7 +77,7 @@ const containerVariants = {
 }
 
 const getGridColumns = (itemCount: number) => {
-  if (itemCount >= 4) return "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  if (itemCount >= 4) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
   if (itemCount === 3) return "grid-cols-1 sm:grid-cols-3"
   if (itemCount === 2) return "grid-cols-1 sm:grid-cols-2"
   return "grid-cols-1"
@@ -92,7 +92,12 @@ export default function FilteredPortfolio() {
   const gridColumns = getGridColumns(filteredItems.length)
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto py-16">
+       <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-gray-800 dark:text-white mb-4">Design & Illustration </h1>
+          <p className="text-gray-600 text-lg dark:text-white  max-w-2xl mx-auto">
+          Logo & Identity design, commission art & illustration, collaborations and more
+          </p></div>
       {/* Filter Buttons */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
@@ -115,21 +120,19 @@ export default function FilteredPortfolio() {
       </motion.div>
 
       {/* Portfolio Grid */}
-      <div className="flex justify-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          layout
-          className={`grid ${gridColumns} gap-6 max-w-6xl`}
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
-              <PortfolioImage key={item.id} item={item} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </div>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        layout
+        className={`grid ${gridColumns} gap-4 w-full`}
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredItems.map((item) => (
+            <PortfolioImage key={item.id} item={item} />
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   )
 }

@@ -75,13 +75,12 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.8 }} 
           animate={{ opacity: 1, scale: 1 }} 
           transition={{ duration: 1 }} 
-          whileHover={{ rotate: 5 }} 
+         
           className="relative mx-auto aspect-square w-full max-w-lg lg:mx-0">
             <div className="absolute -right-4 -top-4 h-full w-full rounded-3xl bg-purple-200 dark:bg-purple-900/50"></div>
             <div className="relative h-full w-full overflow-hidden rounded-3xl bg-purple-100 dark:bg-purple-900/30">
               <Image src="/images/home.avif" alt="Portfolio Image" fill className="object-cover" priority />
-              <div className="absolute -right-2 -top-2 text-2xl">✨</div>
-              <div className="absolute -bottom-2 -left-2 text-2xl">✨</div>
+             
             </div>
           </motion.div>
         </motion.div>
